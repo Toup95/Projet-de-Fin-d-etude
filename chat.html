@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AgriDetect - Chat Bot Agricole</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <nav class="navbar">
+        <div class="container">
+            <div class="logo">
+                <h1>🌾 AgriDetect</h1>
+            </div>
+            <ul class="nav-menu">
+                <li><a href="index.html">Détection</a></li>
+                <li><a href="chat.html" class="active">Chat Bot</a></li>
+                <li><a href="dashboard.html">Dashboard</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <main class="container">
+        <section class="hero">
+            <h2>💬 Assistant Agricole Intelligent</h2>
+            <p>Posez vos questions sur les maladies des plantes, les traitements et les bonnes pratiques agricoles</p>
+        </section>
+
+        <section class="chat-section">
+            <div class="chat-container">
+                <div class="chat-messages" id="chatMessages">
+                    <div class="message bot-message">
+                        <div class="message-avatar">🤖</div>
+                        <div class="message-content">
+                            <p>Bonjour ! Je suis votre assistant agricole AgriDetect. Comment puis-je vous aider aujourd'hui ?</p>
+                            <span class="message-time">Maintenant</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="chat-suggestions">
+                    <p><strong>Questions suggérées :</strong></p>
+                    <div class="suggestions-list">
+                        <button class="suggestion-btn" onclick="sendSuggestion('Comment traiter le mildiou sur la tomate ?')">
+                            Comment traiter le mildiou sur la tomate ?
+                        </button>
+                        <button class="suggestion-btn" onclick="sendSuggestion('Quels sont les symptômes de l\'oïdium ?')">
+                            Quels sont les symptômes de l'oïdium ?
+                        </button>
+                        <button class="suggestion-btn" onclick="sendSuggestion('Comment prévenir les maladies fongiques ?')">
+                            Comment prévenir les maladies fongiques ?
+                        </button>
+                        <button class="suggestion-btn" onclick="sendSuggestion('Quels traitements biologiques sont disponibles ?')">
+                            Quels traitements biologiques sont disponibles ?
+                        </button>
+                    </div>
+                </div>
+
+                <div class="chat-input-container">
+                    <input 
+                        type="text" 
+                        id="chatInput" 
+                        placeholder="Tapez votre question..." 
+                        onkeypress="handleKeyPress(event)"
+                    >
+                    <button class="btn-send" onclick="sendMessage()">
+                        <span>Envoyer</span> ➤
+                    </button>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <div class="container">
+            <p>&copy; 2025 AgriDetect - API v1.0.0 | Projet de Fin d'Étude</p>
+        </div>
+    </footer>
+
+    <script src="app.js"></script>
+    <script>
+        // Generate unique session ID
+        let sessionId = 'session-' + Date.now();
+    </script>
+</body>
+</html>

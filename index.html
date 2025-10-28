@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AgriDetect - Détection des Maladies des Cultures</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <nav class="navbar">
+        <div class="container">
+            <div class="logo">
+                <h1>🌾 AgriDetect</h1>
+            </div>
+            <ul class="nav-menu">
+                <li><a href="index.html" class="active">Détection</a></li>
+                <li><a href="chat.html">Chat Bot</a></li>
+                <li><a href="dashboard.html">Dashboard</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <main class="container">
+        <section class="hero">
+            <h2>Détectez les Maladies de vos Cultures</h2>
+            <p>Uploadez une photo de votre plante et obtenez un diagnostic instantané avec des recommandations de traitement</p>
+        </section>
+
+        <section class="upload-section">
+            <div class="upload-box" id="uploadBox">
+                <input type="file" id="imageInput" accept="image/*" hidden>
+                <div class="upload-content">
+                    <div class="upload-icon">📸</div>
+                    <h3>Cliquez ou glissez une image ici</h3>
+                    <p>Formats acceptés: JPG, PNG, JPEG</p>
+                    <button class="btn-primary" onclick="document.getElementById('imageInput').click()">
+                        Choisir une image
+                    </button>
+                </div>
+            </div>
+
+            <div class="image-preview" id="imagePreview" style="display: none;">
+                <img id="previewImg" src="" alt="Preview">
+                <button class="btn-secondary" onclick="resetUpload()">Changer d'image</button>
+                <button class="btn-primary" onclick="analyzeImage()">Analyser</button>
+            </div>
+        </section>
+
+        <section class="loading-section" id="loadingSection" style="display: none;">
+            <div class="loader"></div>
+            <p>Analyse en cours...</p>
+        </section>
+
+        <section class="results-section" id="resultsSection" style="display: none;">
+            <h2>Résultats de l'Analyse</h2>
+            
+            <div class="result-card">
+                <div class="result-header">
+                    <h3>🔬 Diagnostic</h3>
+                </div>
+                <div class="result-content">
+                    <div class="result-item">
+                        <span class="label">Maladie détectée:</span>
+                        <span class="value" id="diseaseName">-</span>
+                    </div>
+                    <div class="result-item">
+                        <span class="label">Confiance:</span>
+                        <span class="value confidence" id="confidence">-</span>
+                    </div>
+                    <div class="result-item">
+                        <span class="label">Sévérité:</span>
+                        <span class="value severity" id="severity">-</span>
+                    </div>
+                    <div class="result-item">
+                        <span class="label">Culture affectée:</span>
+                        <span class="value" id="affectedCrop">-</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="result-card">
+                <div class="result-header">
+                    <h3>💊 Traitements Recommandés</h3>
+                </div>
+                <div class="result-content" id="treatments">
+                    <!-- Treatments will be inserted here -->
+                </div>
+            </div>
+
+            <div class="result-card">
+                <div class="result-header">
+                    <h3>🛡️ Conseils de Prévention</h3>
+                </div>
+                <div class="result-content">
+                    <ul id="preventionTips">
+                        <!-- Prevention tips will be inserted here -->
+                    </ul>
+                </div>
+            </div>
+
+            <button class="btn-primary" onclick="resetUpload()">Nouvelle Analyse</button>
+        </section>
+
+        <section class="error-section" id="errorSection" style="display: none;">
+            <div class="error-message">
+                <h3>⚠️ Erreur</h3>
+                <p id="errorMessage"></p>
+                <button class="btn-secondary" onclick="resetUpload()">Réessayer</button>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <div class="container">
+            <p>&copy; 2025 AgriDetect - API v1.0.0 | Projet de Fin d'Étude</p>
+        </div>
+    </footer>
+
+    <script src="app.js"></script>
+</body>
+</html>
